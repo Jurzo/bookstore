@@ -1,14 +1,14 @@
 package fi.hh.swd20.bookstore.web;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class BookController {
 
-    @GetMapping("/index")
+    @RequestMapping("/index")
     public String bookstore() {
-        return "";
+        return "temp";
     }
     
 }
