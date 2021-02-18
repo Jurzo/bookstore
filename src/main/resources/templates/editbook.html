@@ -9,7 +9,7 @@
 
 <body>
     <h1>Edit Book</h1>
-    <form th:object="${book}" th:action="@{save}" action="#" method="post">
+    <form th:object="${book}" th:action="@{../savebook}" action="#" method="post">
         <label for="author">Author</label>
         <input type="text" id="author" th:field="*{author}"/>
         <label for="title">Title</label>
@@ -18,6 +18,7 @@
         <input type="text" id="isbn" th:field="*{isbn}" />
         <label for="year">Year</label>
         <input type="text" id="year" th:field="*{year}" />
+        <input type="hidden" id="price" th:field="*{price}"/>
         <input type="hidden" id="id" th:field="*{id}"/>
         <input type="submit" value="Save" />
     </form>
