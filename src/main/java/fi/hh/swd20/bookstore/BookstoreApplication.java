@@ -28,12 +28,20 @@ public class BookstoreApplication {
 			log.info("Save some test categories");
 			Category cat1 = new Category("SciFi");
 			Category cat2 = new Category("Fantasy");
+			Category cat3 = new Category("Education");
 			catRep.save(cat1);
 			catRep.save(cat2);
+			catRep.save(cat3);
+
+			
+			log.info("fetch all categories");
+			for (Category c : catRep.findAll()) {
+				log.info(c.toString());
+			}
 
             log.info("Save some test books");
 			Book book1 = new Book("Harry Potter", "JKRowling", "2000", "1234456", 12.5, cat1);
-			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5, cat2);
+			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5, cat3);
 			repository.save(book1);
 			repository.save(book2);
 
