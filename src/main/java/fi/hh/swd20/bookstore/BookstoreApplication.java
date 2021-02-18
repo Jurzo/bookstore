@@ -24,17 +24,18 @@ public class BookstoreApplication {
 	@Bean
     public CommandLineRunner demo(BookRepository repository, CategoryRepository catRep) {
         return (args) -> {
-            log.info("Save some test books");
-			Book book1 = new Book("Harry Potter", "JKRowling", "2000", "1234456", 12.5);
-			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5);
-			repository.save(book1);
-			repository.save(book2);
 
 			log.info("Save some test categories");
 			Category cat1 = new Category("SciFi");
 			Category cat2 = new Category("Fantasy");
 			catRep.save(cat1);
 			catRep.save(cat2);
+
+            log.info("Save some test books");
+			Book book1 = new Book("Harry Potter", "JKRowling", "2000", "1234456", 12.5, cat1);
+			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5, cat2);
+			repository.save(book1);
+			repository.save(book2);
 
 			log.info("fetch all books");
 			for (Book b : repository.findAll()) {
