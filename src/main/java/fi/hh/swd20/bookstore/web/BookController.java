@@ -23,9 +23,9 @@ public class BookController {
     @Autowired
     private CategoryRepository catRepo;
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
     public String bookstore() {
-        return "temp";
+        return "redirect:booklist";
     }
 
     @GetMapping("/booklist")
