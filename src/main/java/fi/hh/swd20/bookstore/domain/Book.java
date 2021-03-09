@@ -24,7 +24,6 @@ public class Book {
     public Book() {
         super();
         this.author = null;
-        this.author = null;
         this.year = null;
         this.isbn = null;
         this.price = 0;

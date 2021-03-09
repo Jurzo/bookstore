@@ -1,6 +1,7 @@
 package fi.hh.swd20.bookstore.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.hh.swd20.bookstore.domain.Book;
 import fi.hh.swd20.bookstore.domain.BookRepository;
@@ -59,6 +62,20 @@ public class BookController {
         model.addAttribute("book", repository.findById(id).get());
         model.addAttribute("categories", catRepo.findAll());
         return "editbook";
+    }
+
+    @GetMapping("getbooks")
+    public @ResponseBody List<Book> booklistRest() {
+        return (List<Book>) repository.findAll();
+    }
+
+    @GetMapping("getbook")
+    public @ResponseBody Book bookRest(@RequestParam(value="id", defaultValue="1") Long id) {
+        Optional<Book> book = repository.findById(id);
+        if (book.isPresent()) {
+            return book.get();
+        }
+        return new Book();
     }
     
 }
