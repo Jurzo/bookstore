@@ -40,6 +40,10 @@ public class Book {
         this.category = category;
     }
 
+    public Book(String title, String author, String year, String isbn, double price) {
+        this(title, author, year, isbn, price, null);
+    }
+
     public Long getId() {
         return id;
     }

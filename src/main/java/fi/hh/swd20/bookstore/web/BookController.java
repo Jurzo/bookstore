@@ -1,5 +1,6 @@
 package fi.hh.swd20.bookstore.web;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import fi.hh.swd20.bookstore.domain.Book;
 import fi.hh.swd20.bookstore.domain.BookRepository;
+import fi.hh.swd20.bookstore.domain.Category;
 import fi.hh.swd20.bookstore.domain.CategoryRepository;
 
 @Controller
@@ -40,8 +42,11 @@ public class BookController {
 
     @GetMapping("/addbook")
     public String addBook(Model model) {
+        List<Category> categories = new ArrayList();
+        categories.add(new Category());
+        categories.addAll((List<Category>) catRepo.findAll());
         model.addAttribute("book", new Book());
-        model.addAttribute("categories", catRepo.findAll());
+        model.addAttribute("categories", categories);
         return "addbook";
     }
 
@@ -59,8 +64,11 @@ public class BookController {
 
     @GetMapping("edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
+        List<Category> categories = new ArrayList();
+        categories.add(new Category());
+        categories.addAll((List<Category>) catRepo.findAll());
         model.addAttribute("book", repository.findById(id).get());
-        model.addAttribute("categories", catRepo.findAll());
+        model.addAttribute("categories", categories);
         return "editbook";
     }
 
@@ -76,6 +84,11 @@ public class BookController {
             return book.get();
         }
         return new Book();
+    }
+
+    @GetMapping("login")
+    public String login() {
+        return "login";
     }
     
 }

@@ -41,7 +41,7 @@ public class BookstoreApplication {
 
             log.info("Save some test books");
 			Book book1 = new Book("Harry Potter", "JKRowling", "2000", "1234456", 12.5, cat1);
-			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5, cat3);
+			Book book2 = new Book("Testikirja", "Tero Testi", "2009", "1234456", 50.5);
 			repository.save(book1);
 			repository.save(book2);
 
