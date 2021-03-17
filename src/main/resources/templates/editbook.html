@@ -20,7 +20,7 @@
         <select id="categories" th:field="*{category}">
             <option th:each="category:${categories}"
                     th:value="${category.id}"
-                    th:text="${category.name}">
+                    th:text="${category.name != null} ? ${category.name} : '-'">
             </option>
         </select>
         <br>
