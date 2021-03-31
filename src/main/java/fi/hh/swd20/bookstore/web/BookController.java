@@ -43,7 +43,7 @@ public class BookController {
 
     @GetMapping("/addbook")
     public String addBook(Model model) {
-        List<Category> categories = new ArrayList();
+        List<Category> categories = new ArrayList<>();
         categories.add(new Category());
         categories.addAll((List<Category>) catRepo.findAll());
         model.addAttribute("book", new Book());
@@ -66,7 +66,7 @@ public class BookController {
 
     @GetMapping("edit/{id}")
     public String editBook(@PathVariable("id") Long id, Model model) {
-        List<Category> categories = new ArrayList();
+        List<Category> categories = new ArrayList<>();
         categories.add(new Category());
         categories.addAll((List<Category>) catRepo.findAll());
         model.addAttribute("book", repository.findById(id).get());
