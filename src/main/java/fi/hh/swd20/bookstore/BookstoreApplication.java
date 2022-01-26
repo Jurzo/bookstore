@@ -43,7 +43,7 @@ public class BookstoreApplication {
 
 			// admin:admin, user:user
 			log.info("Create some users to database");
-			User user = new User("user", "user@domain", "$2a$10$jpCEOlTIWzeGLfCdT9HBmeP8oz9/Z4w3vpaHbFB4JewP/o9v2G6Ji", "USER");
+			User user = new User(System.getenv("USERNAME"), "user@domain", "$2a$10$jpCEOlTIWzeGLfCdT9HBmeP8oz9/Z4w3vpaHbFB4JewP/o9v2G6Ji", "USER");
 			User admin = new User("admin", "admin@domain", "$2a$10$BL3dOAcbj0sHZwcIiNSvoO8nyfeVwGdWSMPriJwQo5yOoXhcIPOMe", "ADMIN");
 			users.save(user);
 			users.save(admin);
