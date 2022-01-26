@@ -20,7 +20,7 @@ jobs:
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
         env:
-            USERNAME: ${{ secrets.TEST_USERNAME }}
+            TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
 
   build:
     needs: test
