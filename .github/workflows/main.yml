@@ -39,10 +39,8 @@ jobs:
         with:
           push: true
           tags: jurzo/bookstore:latest
-          docker_build_args: |
-            USERNAME
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
+          secrets: |
+            "USERNAME"=${{ secrets.USERNAME }}
 
   deploy:
     needs: test
@@ -55,7 +53,5 @@ jobs:
           heroku_app_name: devops-bookstore
           heroku_email: ${{ secrets.EMAIL }}
           usedocker: true
-          docker_build_args: |
-            USERNAME
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
+          secrets: |
+            "USERNAME"=${{ secrets.USERNAME }}

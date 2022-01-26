@@ -20,11 +20,9 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository repository;
 
-    private final String userName = System.getenv("USERNAME");
-
     @Test
     public void findByNameShouldReturnUser() {
-        User user = repository.findByUsername(userName);
+        User user = repository.findByUsername(System.getenv("USERNAME"));
         assertNotNull(user);
     }
 
@@ -36,11 +34,11 @@ public class UserRepositoryTest {
 
     @Test
     public void deleteUser() {
-        User user = repository.findByUsername(userName);
+        User user = repository.findByUsername(System.getenv("USERNAME"));
         assertNotNull(user);
 
         repository.deleteById(user.getId());
-        user = repository.findByUsername(userName);
+        user = repository.findByUsername(System.getenv("USERNAME"));
         assertNull(user);
     }
     
