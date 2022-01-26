@@ -40,7 +40,7 @@ jobs:
           push: true
           tags: jurzo/bookstore:latest
           secrets: |
-            "TEST_USERNAME=${{ secrets.USERNAME }}"
+            "TEST_USERNAME=${{ secrets.TEST_USERNAME }}"
 
 #  deploy:
 #    needs: test
