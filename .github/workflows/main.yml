@@ -1,5 +1,8 @@
 name: Release DevOps with Docker
 
+env:
+  USERNAME: ${{ secrets.USERNAME }}
+
 on:
   push:
     branches:
@@ -51,5 +54,3 @@ jobs:
           usedocker: true
           docker_build_args: |
             USERNAME
-        env:
-          USERNAME: ${{ secrets.USERNAME }}
