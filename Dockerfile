@@ -18,5 +18,5 @@ COPY --from=build target/bookstore-1.0.0.jar .
 
 EXPOSE 8080
 
-ENTRYPOINT ["java"]
+ENTRYPOINT ["TEST_USERNAME=$(cat /run/secrets/TEST_USERNAME)", "java"]
 CMD ["-jar", "bookstore-1.0.0.jar"]
