@@ -37,21 +37,22 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
+          context: docker/hub
           push: true
           tags: jurzo/bookstore:latest
           secrets: |
             "TEST_USERNAME=${{ secrets.TEST_USERNAME }}"
 
-#  deploy:
-#    needs: test
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: actions/checkout@v2
-#      - uses: akhileshns/heroku-deploy@v3.12.12
-#        with:
-#          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-#          heroku_app_name: devops-bookstore
-#          heroku_email: ${{ secrets.EMAIL }}
-#          usedocker: true
-#          secrets: |
-#            "USERNAME=${{ secrets.USERNAME }}"
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.12.12
+        with:
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_app_name: devops-bookstore
+          heroku_email: ${{ secrets.EMAIL }}
+          usedocker: true
+        env:
+          HD_TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
