@@ -16,5 +16,7 @@ COPY --from=build target/bookstore-1.0.0.jar .
 
 EXPOSE 8080
 
+ARG USERNAME
+
 ENTRYPOINT ["java"]
 CMD ["-jar", "bookstore-1.0.0.jar"]
