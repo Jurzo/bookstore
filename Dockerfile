@@ -4,8 +4,8 @@ COPY .mvn .mvn
 COPY mvnw .
 COPY pom.xml .
 
-RUN --mount=type=secret,id=USERNAME \
-   export USERNAME=$(cat /run/secrets/USERNAME)
+RUN --mount=type=secret,id=TEST_USERNAME \
+   export TEST_USERNAME=$(cat /run/secrets/TEST_USERNAME)
 
 RUN chmod +x mvnw && ./mvnw -B dependency:go-offline
 
