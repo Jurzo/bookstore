@@ -1,8 +1,5 @@
 name: Release DevOps with Docker
 
-env:
-  USERNAME: ${{ secrets.USERNAME }}
-
 on:
   push:
     branches:
@@ -40,6 +37,8 @@ jobs:
         with:
           push: true
           tags: jurzo/bookstore:latest
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
 
   deploy:
     needs: test
@@ -54,3 +53,5 @@ jobs:
           usedocker: true
           docker_build_args: |
             USERNAME
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
