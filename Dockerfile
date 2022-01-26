@@ -21,5 +21,5 @@ COPY --from=build TEST_USERNAME .
 
 EXPOSE 8080
 
-ENTRYPOINT ["TEST_USERNAME=$(cat ./TEST_USERNAME)", "java"]
+ENTRYPOINT ["TEST_USERNAME=$(cat TEST_USERNAME)", "java"]
 CMD ["-jar", "bookstore-1.0.0.jar"]
